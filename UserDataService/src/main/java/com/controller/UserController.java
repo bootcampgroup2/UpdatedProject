@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.kafka.UserSignInProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,12 @@ import com.service.UserService;
 
 @RestController
 public class UserController {
+	private UserSignInProducer userSignInProducer;
+	//
+	@Autowired
+	public UserController(UserSignInProducer userSignInProducer) {
+		this.userSignInProducer = userSignInProducer;
+	}
 
 	@Autowired
 	UserService userService;
@@ -44,7 +51,17 @@ public class UserController {
 	@PostMapping("/adduser")
 	public ResponseEntity<?> addUser(@RequestBody User user) throws CustomException{
 		try {
+			user.setNotificationsAllowed(true);
 			userService.addUser(user);
+			System.out.println(user);
+//			User Shivani
+			if (user.getNotificationsAllowed()){
+				userSignInProducer.sendSignInMessage(user);
+				System.out.println("Notif sent");
+			}else {
+				System.out.println("Notifications off!");
+			}
+
 		}catch(CustomException e) {
 			throw new CustomException(e.getMessage());
 		}

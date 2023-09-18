@@ -9,12 +9,14 @@
         <module name="base-domain" />
         <module name="order-service" />
         <module name="UserDataService" />
+        <module name="AuthenticationService" />
         <module name="email-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AuthenticationService" options="-parameters" />
       <module name="UserDataService" options="-parameters" />
       <module name="base-domain" options="-parameters" />
       <module name="email-service" options="-parameters" />

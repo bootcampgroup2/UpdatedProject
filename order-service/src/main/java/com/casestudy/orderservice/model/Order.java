@@ -1,7 +1,10 @@
-package com.casestudy.basedomain.dto;
+package com.casestudy.orderservice.model;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+
+@Document(collection="order")
 public class Order {
-    private String orderId;
+
     private String name;
     private int qty;
     private double price;
@@ -10,14 +13,9 @@ public class Order {
     
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", name=" + name + ", qty=" + qty + ", price=" + price + "]";
+		return "Order [ name=" + name + ", qty=" + qty + ", price=" + price + "]";
 	}
-	public String getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
+
 	public String getName() {
 		return name;
 	}
@@ -38,7 +36,7 @@ public class Order {
 	}
 	public Order(String orderId, String name, int qty, double price) {
 		super();
-		this.orderId = orderId;
+
 		this.name = name;
 		this.qty = qty;
 		this.price = price;

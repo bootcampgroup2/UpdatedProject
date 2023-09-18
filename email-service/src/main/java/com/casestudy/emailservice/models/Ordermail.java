@@ -15,13 +15,17 @@ public class Ordermail {
     @Field
     private Boolean read;
 
+    @Field
+    private String priority;
+
     public Ordermail() {
     }
 
-    public Ordermail(String email, String message, Boolean read) {
+    public Ordermail(String email, String message, Boolean read, String priority) {
         this.email = email;
         this.message = message;
         this.read = read;
+        this.priority = priority;
     }
 
     public String getId() {
@@ -56,8 +60,22 @@ public class Ordermail {
         this.read = read;
     }
 
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
     @Override
     public String toString() {
-        return String.format("Ordermail[id='%s', email='%s',message='%s',read='%s']", id,email,message,read);
+        return "Ordermail{" +
+                "id='" + id + '\'' +
+                ", email='" + email + '\'' +
+                ", message='" + message + '\'' +
+                ", read=" + read +
+                ", priority='" + priority + '\'' +
+                '}';
     }
 }

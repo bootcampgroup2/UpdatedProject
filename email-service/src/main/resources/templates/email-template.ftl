@@ -25,7 +25,7 @@
 							<div>
 								
 								<br>"Please visit again" <br> 
-								<br> <b>${message}</b><br>Order id is: ${orderId}<br>Order is for: ${name}<br>NO of Items purchased: ${quantity}<br>Price is : ${price}
+								<br> <b>${message}</b><br>
 								<br>
 							</div>
 						</td>
